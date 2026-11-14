@@ -569,3 +569,7 @@ section[id]{scroll-margin-top:12px}
 @media (max-width:899px){.horas__btns{display:grid;grid-template-columns:1fr 1fr}.horas__btns .tk{padding-left:22px;padding-right:16px}}
 .pie a.tk{color:var(--tk-c);text-decoration:none}
 @media (max-width:899px){.horas__btns .tk{padding:12px 12px 12px 30px;letter-spacing:.03em;font-size:13px;white-space:nowrap}.horas__btns .tk::before{left:16px}}
+/* pantallas bajas (celu acostado, ventanas chicas): el spiedo nunca baja de un tamaño jugable */
+@media (max-width:899px){.heroB .spiedo{--W:min(100%,300px,max(210px,calc((var(--alto,100svh) - 420px) * .745)))}}
+@media (min-width:900px){.heroB .spiedo{--W:min(max(300px,calc((var(--alto,100svh) - 330px) * .745)),520px)}}
+@media (min-width:1100px){.heroB .spiedo{--W:min(max(320px,calc((var(--alto,100svh) - 230px) * .745)),600px)}}
