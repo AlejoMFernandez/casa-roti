@@ -25,11 +25,11 @@
 <link rel="preload" href="fonts/plus-jakarta-sans-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fuentes.css?v=1">
 <link rel="stylesheet" href="kit/kit.css?v=1">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
 <noscript><style>.rv,.gira,.letra{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<div class="intro" style="--intro-bg:#141414" aria-hidden="true"><div class="intro__logo"><svg class="logo giro" viewBox="0 0 200 200"><use href="#logo"/></svg></div></div>
+<div class="intro" style="--intro-bg:#141414" aria-hidden="true"><div class="intro__logo"><div class="moneda giro"><svg class="logo cara" viewBox="0 0 200 200"><use href="#logo"/></svg><i class="dorso"></i></div></div></div>
 
 <nav class="indice" aria-label="Secciones">
   <a href="#inicio" data-sec="inicio"><i></i><span>El spiedo</span></a>
@@ -81,7 +81,7 @@
   </div>
   <div class="heroB__pie">
     <div class="heroB__lado">
-      <h1 class="vh-celu gira" style="--d:4">Rotisería de barrio en Villa del Parque. Lo que gira en el spiedo, a tu mesa.</h1>
+      <h1 class="hero-frase gira" style="--d:4">Rotisería de barrio en Villa del Parque. Lo que gira en el spiedo, a tu mesa.</h1>
       <a class="hoy-chip gira" style="--d:5" href="#hoy"><img data-hoy-foto src="img/plato-del-dia-240.webp" alt="" width="48" height="48"><div><small>HOY · PLATO DEL DÍA</small><b data-hoy-corto>Roll de merluza</b></div><em data-hoy-precio>$18.999</em></a>
     </div>
     <a class="tk tk--oliva gira" style="--d:6" href="#carta"><span class="n">01</span>Hacé tu pedido</a>
@@ -94,7 +94,7 @@
     <p class="pizarra__fecha">HOY</p>
     <h2 id="hoy-tit" data-pizarra><span class="vh">Plato del día: </span><span class="r">Roll de merluza al gratén con puré</span></h2>
     <p class="pizarra__precio" data-pizarra-precio><span class="r">$18.999</span></p>
-    <p class="pizarra__desc" data-hoy-desc>Roll de merluza gratinado con parmesano y ajo, con puré de papa.</p>
+    <p class="pizarra__desc" data-hoy-desc>Gratinado con parmesano y ajo. Sale con puré de papa casero.</p>
   </div>
   <div class="heroA__base rv" style="--d:2">
     <button class="tk" type="button" data-sumar-hoy><span class="n">02</span>Sumá el plato del día</button>
@@ -119,10 +119,10 @@
 
 <section class="fiestas" id="fiestas" aria-labelledby="fiestas-tit">
   <div class="cont fiestas__grid">
-    <div class="fiestas__platos rv" aria-hidden="true">
-      <figure class="fplato fplato--a"><img src="img/matambre-480.webp" alt="" width="480" height="480" loading="lazy"><figcaption>Matambre con rusa</figcaption></figure>
-      <figure class="fplato fplato--b"><img src="img/vitel-tone-480.webp" alt="" width="480" height="480" loading="lazy"><figcaption>Vitel toné</figcaption></figure>
-      <figure class="fplato fplato--c"><img src="img/peceto-240.webp" alt="" width="240" height="240" loading="lazy"></figure>
+    <div class="fiestas__platos rv">
+      <figure class="fplato fplato--a"><img src="img/matambre-480.webp" alt="Matambre casero con ensalada rusa" width="480" height="480" loading="lazy"><figcaption>Matambre con rusa</figcaption></figure>
+      <figure class="fplato fplato--b"><img src="img/vitel-tone-480.webp" alt="Vitel toné" width="480" height="480" loading="lazy"><figcaption>Vitel toné</figcaption></figure>
+      <figure class="fplato fplato--c"><img src="img/peceto-240.webp" alt="Peceto a la vinagreta" width="240" height="240" loading="lazy"></figure>
     </div>
     <div class="rv" style="--d:1">
       <p class="kick">24 y 31 de diciembre</p>
@@ -181,7 +181,7 @@
       <div class="pie__marca"><svg viewBox="0 0 200 200" role="img" aria-label="Casa Roti"><use href="#logo"/></svg><p>Rotisería moderna<br>de barrio</p></div>
       <div><h4>Dónde</h4><p>Nogoyá 3218<br>Villa del Parque, CABA</p></div>
       <div><h4>Cuándo</h4><p>Lunes a sábados<br>9:00 a 23:00 hs</p></div>
-      <div><h4>Escribinos</h4><p><a class="pie__link" href="https://wa.me/5491131220538" target="_blank" rel="noopener">WhatsApp 11 3122-0538</a><a class="pie__link" href="https://www.instagram.com/casa.roti_rotiseriamoderna/" target="_blank" rel="noopener">Instagram @casa.roti</a></p></div>
+      <div><h4>Escribinos</h4><p><a class="pie__link" href="https://wa.me/5491131220538" target="_blank" rel="noopener">WhatsApp 11 3122-0538</a><a class="pie__link" href="https://www.instagram.com/casa.roti_rotiseriamoderna/" target="_blank" rel="noopener">Instagram @casa.roti_rotiseriamoderna</a></p></div>
     </div>
     <p class="pie__credito">© Casa Roti · Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
   </div>
@@ -194,10 +194,10 @@
     <p class="pop__nota">Sumá lo que quieras. En tu pedido elegís el día de retiro y te confirmamos el precio por WhatsApp.</p>
     <ul data-fiestas-lista></ul>
     <p class="pop__nota">Retiro el 24/12 hasta las 16:00 hs y el 31/12 hasta las 14:00 hs.</p>
-    <button class="tk" type="button" data-ir-pedido>Ir a mi pedido</button>
+    <div class="pop__pie"><button class="tk" type="button" data-ir-pedido>Ir a mi pedido</button></div>
   </div>
 </div>
 <div class="toast" role="status"></div>
-<script type="module" src="js/app.js?v=1"></script>
+<script type="module" src="js/app.js?v=2"></script>
 </body>
 </html>

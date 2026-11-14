@@ -25,7 +25,7 @@ const SPIEDO = [
   { id: 'empapana-carne', cat: 'Empapanas', n: 'Empapanas', d: 'Nuestras empanadas fritas con estilo. Carne a cuchillo, pollo, J&Q o verdura.', p: 2999, unidad: true },
   { id: 'ravioles', cat: 'Pastas caseras', n: 'Ravioles caseros', d: 'De verdura y pollo, hechos en la cocina.', p: 12999 },
   { id: 'sorrentinos-calabaza', cat: 'Pastas caseras', n: 'Sorrentinos', d: 'De calabaza y queso. También de espinaca o de pollo y puerro.', p: 13999 },
-  { id: 'flan-mixto', cat: 'Postres', n: 'Flan mixto', d: 'Flan casero con dulce de leche y crema.', p: 7499 },
+  { id: 'plato-del-dia', cat: 'Hoy · plato del día', n: 'Plato del día', d: 'Roll de merluza gratinado con parmesano y ajo, con puré de papa.', p: 18999, hoy: true },
 ];
 SPIEDO.forEach(x => { x.foto480 = `img/${x.id}-480.webp`; });
 
@@ -147,6 +147,7 @@ function spiedo(raiz) {
     const it = items[mejor], ang = ((it.base + rot) % 360 + 540) % 360 - 180, cerca = Math.abs(ang) < 14;
     if (mejor !== frente) {
       frente = mejor;
+      band.classList.toggle('hoy', !!it.x.hoy);
       $('b', band).textContent = it.x.n; $('span', band).textContent = (it.x.desde ? 'desde ' : '') + pesos(it.x.p) + (it.x.unidad ? ' c/u' : '');
       info.textContent = `Girá el spiedo · ${mejor + 1}/${N}`;
     }
@@ -209,13 +210,14 @@ function spiedo(raiz) {
     $('img', pop).src = x.foto480; $('.sp-pop__cat', pop).textContent = x.cat;
     $('h3', pop).textContent = x.n; $('.sp-pop__desc', pop).textContent = x.d;
     $('.sp-pop__precio', pop).textContent = (x.desde ? 'desde ' : '') + pesos(x.p);
-    pop.classList.add('abierto'); pop.setAttribute('aria-hidden', 'false'); $('.sp-pop__x', pop).focus({ preventScroll: true });
+    pop.classList.add('abierto'); pop.setAttribute('aria-hidden', 'false'); pop.dataset.t = Date.now(); $('.sp-pop__x', pop).focus({ preventScroll: true });
   }
+  raiz.irA = (id) => { const i = items.findIndex(it => it.x.id === id); if (i >= 0) girarA(i); };
   const cerrar = () => { pop.classList.remove('abierto'); pop.setAttribute('aria-hidden', 'true'); quieto = 0; };
   $('.sp-pop__x', pop).onclick = cerrar;
   document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
   document.addEventListener('pointerdown', e => { if (pop.classList.contains('abierto') && !e.target.closest('.sp-pop')) cerrar(); }, true);
-  $('[data-sumar]', pop).onclick = () => { const x = items[frente].x; if (KIT?.carrito) KIT.carrito.agregar(x.id, 1); avisar(`Sumaste ${x.n}`); cerrar(); };
+  $('[data-sumar]', pop).onclick = () => { if (Date.now() - (+pop.dataset.t || 0) < 450) return; const x = items[frente].x; if (KIT?.carrito) KIT.carrito.agregar(x.id, 1); avisar(`Sumaste ${x.n}`); cerrar(); };
   raiz.refrescar = () => { frente = -1; };
   requestAnimationFrame(t => { ult = t; paso(t); });
 }
@@ -354,6 +356,7 @@ const raizSpiedo = $('.spiedo');
 spiedo(raizSpiedo);
 intro();
 $('[data-sumar-hoy]').addEventListener('click', () => { if (!KIT?.carrito) return; KIT.carrito.agregar('plato-del-dia', 1); avisar('Sumaste el plato del día'); });
+$('.hoy-chip').addEventListener('click', e => { e.preventDefault(); raizSpiedo.irA?.('plato-del-dia'); setTimeout(() => $('#hoy').scrollIntoView({ behavior: 'smooth' }), 750); });
 entradas(); navegacion(); popFiestas(); mostradorInteraccion();
 // la pizarra se escribe cuando aparece en pantalla
 new IntersectionObserver(([e], o) => { if (e.isIntersecting) { $('#hoy').classList.add('escribe'); o.disconnect(); } }, { threshold: .3 }).observe($('#hoy'));
@@ -364,7 +367,7 @@ window.KIT = KIT;
 async function refrescar() {
   const [cats, prods] = await Promise.all([KIT.store.getCategorias(), KIT.store.getProductos()]);
   const P = new Map(prods.map(p => [p.id, p]));
-  SPIEDO.forEach(x => { const p = P.get(x.id); if (!p) return; x.p = p.precio; x.d = p.descripcion || x.d; if (p.foto) x.foto480 = p.foto; });
+  SPIEDO.forEach(x => { const p = P.get(x.id); if (!p) return; x.p = p.precio; x.d = p.descripcion || x.d; if (p.foto) x.foto480 = p.foto; if (x.hoy) x.n = p.nombre.split(' ').slice(0, 3).join(' '); });
   raizSpiedo.refrescar?.();
   mostrador(cats, prods); fiestas(prods); hoy(prods);
   const nq = P.get('noquis-papa'); if (nq) $('[data-noquis-precio]').textContent = pesos(nq.precio);
