@@ -562,3 +562,10 @@ section[id]{scroll-margin-top:12px}
 @media (max-width:899px){.heroB .gigante{margin-top:12px;font-size:min(23vw,13vh)}}
 /* celu: la píldora del panel solo cerca del final (no tapa el mostrador) */
 @media (max-width:899px){html:not(.ver-pill) .kit-demo-pill{opacity:0!important;pointer-events:none!important}}
+/* celu: el acceso al panel va dentro del pie, no flotando */
+.pie__panel{display:none}
+@media (max-width:899px){.kit-demo-pill{display:none!important}.pie__panel{display:inline-flex;margin-top:30px}}
+.sp-pop__desc{height:46px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+@media (max-width:899px){.horas__btns{display:grid;grid-template-columns:1fr 1fr}.horas__btns .tk{padding-left:22px;padding-right:16px}}
+.pie a.tk{color:var(--tk-c);text-decoration:none}
+@media (max-width:899px){.horas__btns .tk{padding:12px 12px 12px 30px;letter-spacing:.03em;font-size:13px;white-space:nowrap}.horas__btns .tk::before{left:16px}}

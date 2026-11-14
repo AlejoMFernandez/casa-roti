@@ -22,7 +22,7 @@ const SPIEDO = [
   { id: 'mila-napo-ternera', cat: 'Milanesas', n: 'Mila napolitana', d: 'Milanesa de ternera con jamón, salsa de tomate y mozzarella.', p: 17999 },
   { id: 'noquis-papa', cat: 'Pastas caseras', n: 'Ñoquis de papa', d: 'Ñoquis caseros de papa, amasados en la cocina.', p: 13999 },
   { id: 'pastel-papa', cat: 'De la cocina', n: 'Pastel de papa', d: 'Porción abundante, relleno de carne y gratinado.', p: 18999 },
-  { id: 'empapana-carne', cat: 'Empapanas', n: 'Empapanas', d: 'Nuestras empanadas fritas con estilo. Carne a cuchillo, pollo, J&Q o verdura.', p: 2999, unidad: true },
+  { id: 'empapana-carne', cat: 'Empanadas fritas con estilo', n: 'Empapanas', d: 'Nuestras empanadas fritas con estilo. Carne a cuchillo, pollo, J&Q o verdura.', p: 2999, unidad: true },
   { id: 'ravioles', cat: 'Pastas caseras', n: 'Ravioles caseros', d: 'De verdura y pollo, hechos en la cocina.', p: 12999 },
   { id: 'sorrentinos-calabaza', cat: 'Pastas caseras', n: 'Sorrentinos', d: 'De calabaza y queso. También de espinaca o de pollo y puerro.', p: 13999 },
   { id: 'plato-del-dia', cat: 'Hoy · plato del día', n: 'Plato del día', d: 'Roll de merluza gratinado con parmesano y ajo, con puré de papa.', p: 18999, hoy: true },
