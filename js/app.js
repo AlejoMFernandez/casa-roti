@@ -357,7 +357,7 @@ spiedo(raizSpiedo);
 intro();
 $('[data-sumar-hoy]').addEventListener('click', () => { if (!KIT?.carrito) return; KIT.carrito.agregar('plato-del-dia', 1); avisar('Sumaste el plato del día'); });
 $('.hoy-chip').addEventListener('click', e => { e.preventDefault(); raizSpiedo.irA?.('plato-del-dia'); setTimeout(() => $('#hoy').scrollIntoView({ behavior: 'smooth' }), 750); });
-new IntersectionObserver(es => es.forEach(e => html.classList.toggle('ver-pill', e.isIntersecting))).observe($('#llegar'));
+new IntersectionObserver(es => es.forEach(e => html.classList.toggle('ver-pill', e.isIntersecting))).observe($('.pie'));
 entradas(); navegacion(); popFiestas(); mostradorInteraccion();
 // la pizarra se escribe cuando aparece en pantalla
 new IntersectionObserver(([e], o) => { if (e.isIntersecting) { $('#hoy').classList.add('escribe'); o.disconnect(); } }, { threshold: .3 }).observe($('#hoy'));
