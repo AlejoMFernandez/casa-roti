@@ -573,3 +573,12 @@ section[id]{scroll-margin-top:12px}
 @media (max-width:899px){.heroB .spiedo{--W:min(100%,300px,max(210px,calc((var(--alto,100svh) - 420px) * .745)))}}
 @media (min-width:900px){.heroB .spiedo{--W:min(max(300px,calc((var(--alto,100svh) - 330px) * .745)),520px)}}
 @media (min-width:1100px){.heroB .spiedo{--W:min(max(320px,calc((var(--alto,100svh) - 230px) * .745)),600px)}}
+
+/* cartel del spiedo fuera del plato (pedido de Alejo: no tapar la foto) */
+.sp-bandera,.sp-bandera.ver{width:auto;height:auto}
+.sp-bandera .palo{display:none}
+.sp-bandera .tela{position:relative;left:0;top:0;width:172px;height:56px;padding:7px 14px;border-radius:10px;align-items:center;text-align:center}
+.sp-bandera .tela::after{content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;margin-left:-6px;background:inherit;transform:rotate(45deg);border-radius:2px}
+.sp-bandera.arriba .tela::after{top:auto;bottom:-6px}
+.sp-bandera b{max-width:100%}
+@media (min-width:900px){.sp-bandera .tela{width:200px;height:64px}}

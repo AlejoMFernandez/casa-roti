@@ -153,8 +153,12 @@ function spiedo(raiz) {
     }
     band.classList.toggle('ver', cerca && !pop.classList.contains('abierto'));
     if (vapor) { vapor.style.transform = `translate(${it.px - 45}px,${it.py - 100}px)`; vapor.style.zIndex = 94; }
-    const bw = band.offsetWidth;
-    band.style.transform = `translate(${Math.min(W - bw, it.px + it.d * .18)}px,${it.py + it.d * .5 - 44}px)`;
+    // cartel fuera del plato: debajo si cuelga arriba, encima si cuelga abajo (solo roza el borde)
+    const bw = band.offsetWidth, bh = band.offsetHeight;
+    const bx = Math.max(4, Math.min(W - bw - 4, it.px - bw / 2));
+    const by = it.tier ? it.py - it.d * .06 - bh + 6 : it.py + it.d * .94 - 6;
+    band.classList.toggle('arriba', !!it.tier);
+    band.style.transform = `translate(${bx}px,${by}px)`;
   }
 
   function paso(t) {
